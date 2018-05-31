@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row my-5 ">
+    <div class="col-md-6">
+      <!-- TRANSFER TO FORM-->
+      <form> 
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">From</label>
+          </div>
+          <select [(ngModel)]="transferFrom.branchOffice" name="branchOffice" class="custom-select" id="inputGroupSelect01">
+            <option selected>Choose BranchOffice</option>
+            <option *ngFor="let b of branchOffices">{{b.name}}</option>
+          </select>
+        </div>
+  
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect02">Product</label>
+            </div>
+            <select [(ngModel)]="transferFrom.product" name="product" class="custom-select" id="inputGroupSelect02">
+              <option selected>Choose Product</option>
+              <option *ngFor="let p of products">{{p.name}}</option>
+          </select>
+        </div> 
+      </form>
+      <!-- END TRANSFER TO FORM-->
+      <form *ngFor="let t of transfersTo ; index as i">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <label class="input-group-text" >To</label>
+          </div>
+          <select [(ngModel)]="t.branchOffice" name="branchOffice" class="custom-select">
+            <option selected>Choose BranchOffice</option>
+            <option *ngFor="let b of branchOffices">{{b.name}}</option>
+          </select>
+        </div>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <label class="input-group-text" >Cantidad</label>
+          </div>
+          <input [(ngModel)]="t.stock" name="stock" type="number" class="form-control">
+          <select [(ngModel)]="t.weight" name="weight" class="input-group-prepend">
+              <option class="input-group-text" >Kg.</option>
+              <option class="input-group-text" >gr.</option>
+          </select>
+          <button class="btn btn-danger ml-2" (click)="removeTransfer(i)">-</button>
+        </div> 
+      </form>
+      
+      <button class="btn btn-success btn-block" (click)="addTransfer()">+</button>
+      <button class="btn btn-block btn-primary" (click)="transfer()">Transfer</button>
+        
+    </div>
+    <div class="col-md-6">
+      <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Branch Office</th>
+              <th scope="col">Product</th>
+              <th scope="col">Stock</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let s of stocks">
+              <td>{{s.branchOffice.name}}</td>
+              <td>{{s.product.name}}</td>
+              <td>{{s.stock}}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    
+    
+  </div>
+
+
+
+<router-outlet></router-outlet>
