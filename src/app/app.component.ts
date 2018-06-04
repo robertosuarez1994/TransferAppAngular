@@ -12,18 +12,22 @@ interface  myData{
 })
 export class AppComponent {
   title = 'tp';
+  
   private products:Array<any> = [];
   private branchOffices:Array<any> = [];
   private stocks:Array<any> = [];
+  
+  private transferFrom ={
+    branchOffice:String,
+    product:String
+  }
+
   private transfersTo:Array<any> = [{
     branchOffice:String,
     stock:Number,
     weight:String
   }];
-  private transferFrom={
-    branchOffice:String,
-    product:String,
-  }
+  
 
 
   constructor(private productService:ProductService){}
@@ -47,8 +51,27 @@ export class AppComponent {
   }
 
   transfer(){
-    console.log(this.transfersTo);
-    console.log(this.transferFrom);
+    let branchFrom = this.transferFrom.branchOffice
+    let product = this.transferFrom.product
+    let transferObj = {}
+    for (let t of this.transfersTo){
+      if(t.weight == "gr"){
+        t.stock = t.stock / 1000;
+      }
+      transferObj = {
+        branchFrom_id : branchFrom,
+        branchTo_id : t.branchOffice,
+        product_id  : product,
+        stock : t.stock,
+      }
+      
+      this.productService.patchStocks(transferObj)
+    }
+    this.GetStocks();
+  }
+
+  public Actualizar(){
+    this.GetStocks();
   }
 
   public GetProducts(){

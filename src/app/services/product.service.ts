@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -20,5 +20,15 @@ export class ProductService {
 
   getStocks():Observable<any>{
     return this.http.get(this.searchUrl.concat('stocks/'))
+  }
+
+  patchStocks(transfer){
+    let httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    }
+    let body = JSON.stringify(transfer)
+
+    return this.http.patch('http://localhost:8000/api/stocks/transfer/',body,httpOptions).subscribe(val => alert(val.data))
+    
   }
 }
