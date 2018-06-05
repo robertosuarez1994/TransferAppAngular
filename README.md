@@ -5,12 +5,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Pasos para que funcione
 
-  +Instalar NodeJS desde su pagina oficial https://nodejs.org/es/download/ Versión: 8.11.2
-  +ejecutar desde la terminal 
+  -Instalar NodeJS desde su pagina oficial https://nodejs.org/es/download/ Versión: 8.11.2.
+  -ejecutar desde la terminal.
     npm install -g @angular/cli   
-  +dirigirse hasta la carpeta del proyecto y desde la terminal ejecutar
-    npm install y luego npm start
-  +Navegar hasta la direccion `http://localhost:4200/`
+  -dirigirse hasta la carpeta del proyecto y desde la terminal ejecutar.
+    npm install y luego npm start.
+  -Navegar hasta la direccion `http://localhost:4200/`.
 
 ## Development server
 
