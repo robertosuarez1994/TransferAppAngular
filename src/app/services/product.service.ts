@@ -28,7 +28,7 @@ export class ProductService {
     }
     let body = JSON.stringify(transfer)
 
-    return this.http.patch('http://localhost:8000/api/stocks/transfer/',body,httpOptions).subscribe(val => alert(val.data))
+    return this.http.patch('http://localhost:8000/api/stocks/transfer/',body,httpOptions).subscribe(val => alert(val['data']))
     
   }
 }

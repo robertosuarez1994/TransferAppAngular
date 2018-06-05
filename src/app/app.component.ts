@@ -67,7 +67,7 @@ export class AppComponent {
       
       this.productService.patchStocks(transferObj)
     }
-    this.GetStocks();
+    this.Actualizar()
   }
 
   public Actualizar(){
